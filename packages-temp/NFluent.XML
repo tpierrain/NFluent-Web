@@ -1,0 +1,886 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NFluent</name>
+    </assembly>
+    <members>
+        <member name="T:NFluent.ChainableFluentAssertion`1">
+            <summary>
+            Provides a way to chain two <see cref="T:NFluent.IFluentAssertion"/> instances. 
+            </summary>
+            <typeparam name="T">Type of the <see cref="T:NFluent.IFluentAssertion"/> to be chained.</typeparam>
+        </member>
+        <member name="T:NFluent.IChainableFluentAssertion`1">
+            <summary>
+            Provides a way to chain two <see cref="T:NFluent.IFluentAssertion"/> instances. 
+            </summary>
+            <typeparam name="T">Type of the <see cref="T:NFluent.IFluentAssertion"/> to be chained.</typeparam>
+        </member>
+        <member name="P:NFluent.IChainableFluentAssertion`1.And">
+            <summary>
+            Chains a new fluent assertion to the current one.
+            </summary>
+            <value>
+            The new fluent assertion instance which has been chained to the previous one.
+            </value>
+        </member>
+        <member name="M:NFluent.ChainableFluentAssertion`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NFluent.ChainableFluentAssertion`1"/> class.
+            </summary>
+            <param name="previousFluentAssertion">The previous fluent assert.</param>
+        </member>
+        <member name="P:NFluent.ChainableFluentAssertion`1.And">
+            <summary>
+            Links a new fluent assertion to the current one.
+            </summary>
+            <value>
+            The new fluent assertion instance which has been linked to the previous one.
+            </value>
+        </member>
+        <member name="T:NFluent.Check">
+            <summary>
+            Provides a set of static methods, returning all an instance of a specific subtype of 
+            <see cref="T:NFluent.IFluentAssertion"/> to be used in order to make check(s) on the provided 
+            system under test (sut) instance.
+            </summary>
+        </member>
+        <member name="M:NFluent.Check.That(System.Collections.IEnumerable)">
+            <summary>
+            Returns a <see cref="T:NFluent.IEnumerableFluentAssertion"/> instance that will provide assertion methods to be executed on the System Under Test enumerable instance.
+            </summary>
+            <param name="enumerable">The enumerable instance to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.IEnumerableFluentAssertion"/> instance to use in order to assert things on the System Under Test enumerable instance.
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.IEnumerableFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.String)">
+            <summary>
+            Returns a <see cref="T:NFluent.IStringFluentAssertion"/> instance that will provide assertion methods to be executed on a given string instance.
+            </summary>
+            <param name="value">The string instance to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.IStringFluentAssertion"/> instance to use in order to assert things on the given string instance.
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.IStringFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.Int32)">
+            <summary>
+            Returns a <see cref="T:NFluent.INumberFluentAssertion"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.INumberFluentAssertion"/> instance to use in order to assert things on the value (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.INumberFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.Int64)">
+            <summary>
+            Returns a <see cref="T:NFluent.INumberFluentAssertion"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.INumberFluentAssertion"/> instance to use in order to assert things on the value (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.INumberFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.Double)">
+            <summary>
+            Returns a <see cref="T:NFluent.INumberFluentAssertion"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.INumberFluentAssertion"/> instance to use in order to assert things on the value (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.INumberFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.Decimal)">
+            <summary>
+            Returns a <see cref="T:NFluent.INumberFluentAssertion"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.INumberFluentAssertion"/> instance to use in order to assert things on the value (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.INumberFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.Single)">
+            <summary>
+            Returns a <see cref="T:NFluent.INumberFluentAssertion"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.INumberFluentAssertion"/> instance to use in order to assert things on the value (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.INumberFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.Int16)">
+            <summary>
+            Returns a <see cref="T:NFluent.INumberFluentAssertion"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.INumberFluentAssertion"/> instance to use in order to assert things on the value (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.INumberFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.Byte)">
+            <summary>
+            Returns a <see cref="T:NFluent.INumberFluentAssertion"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.INumberFluentAssertion"/> instance to use in order to assert things on the value (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.INumberFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.UInt32)">
+            <summary>
+            Returns a <see cref="T:NFluent.INumberFluentAssertion"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.INumberFluentAssertion"/> instance to use in order to assert things on the value (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.INumberFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.UInt16)">
+            <summary>
+            Returns a <see cref="T:NFluent.INumberFluentAssertion"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.INumberFluentAssertion"/> instance to use in order to assert things on the value (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.INumberFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.UInt64)">
+            <summary>
+            Returns a <see cref="T:NFluent.INumberFluentAssertion"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.INumberFluentAssertion"/> instance to use in order to assert things on the value (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.INumberFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="M:NFluent.Check.That(System.Object)">
+            <summary>
+            Returns a <see cref="T:NFluent.IObjectFluentAssertion"/> instance that will provide assertion methods to be executed on a given object.
+            </summary>
+            <param name="value">The object to be tested.</param>
+            <returns>
+            A <see cref="T:NFluent.IObjectFluentAssertion"/> instance to use in order to assert things on the object (System Under Test).
+            </returns>
+            <remarks>
+            Methods of the returned <see cref="T:NFluent.IObjectFluentAssertion"/> instance will usually throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="T:NFluent.EnumerableExtensions">
+            <summary>
+            Extension methods for adding new fluent methods to enumerable.
+            </summary>
+        </member>
+        <member name="M:NFluent.EnumerableExtensions.ToEnumeratedString(System.Collections.IEnumerable)">
+            <summary>
+            Return a string containing all the <see cref="T:System.Collections.IEnumerable"/> elements, separated by a comma.
+            </summary>
+            <param name="enumerable">The enumerable to transform into a string.</param>
+            <returns>
+            A string containing all the <see cref="T:System.Collections.IEnumerable"/> elements, separated by a comma.
+            </returns>
+        </member>
+        <member name="M:NFluent.EnumerableExtensions.ToEnumeratedString(System.Collections.IEnumerable,System.Int64@,System.String)">
+            <summary>
+            Return a string containing all the elements of an <see cref="T:System.Collections.IEnumerable"/>, separated by a given separator.
+            </summary>
+            <param name="enumerable">The enumerable to transform into a string.</param>
+            <param name="itemsCount">The number of items within the <see cref="T:System.Collections.IEnumerable"/>.</param>
+            <param name="separator">The separator.</param>
+            <returns>
+            A string containing all the <see cref="T:System.Collections.IEnumerable"/> elements, separated by a separator.
+            </returns>
+        </member>
+        <member name="M:NFluent.EnumerableExtensions.ToEnumeratedString(System.Collections.IEnumerable,System.Int64@)">
+            <summary>
+            Return a string containing all the elements of an <see cref="T:System.Collections.IEnumerable"/>, separated by a comma.
+            </summary>
+            <param name="enumerable">The enumerable to transform into a string.</param>
+            <param name="itemsCount">The number of items within the <see cref="T:System.Collections.IEnumerable"/>.</param>
+            <returns>
+            A string containing all the <see cref="T:System.Collections.IEnumerable"/> elements, separated by a comma.
+            </returns>
+        </member>
+        <member name="M:NFluent.EnumerableExtensions.ToEnumeratedString(System.Collections.IEnumerable,System.String)">
+            <summary>
+            Return a string containing all the elements of an <see cref="T:System.Collections.IEnumerable"/>, separated by a given separator.
+            </summary>
+            <param name="enumerable">The enumerable to transform into a string.</param>
+            <param name="separator">The separator.</param>
+            <returns>A string containing all the <see cref="T:System.Collections.IEnumerable"/> elements, separated by the given separator.</returns>
+            A string containing all the <see cref="T:System.Collections.IEnumerable"/> elements, separated by the given separator.
+        </member>
+        <member name="T:NFluent.IObjectFluentAssertion">
+            <summary>
+            Provides assertion methods to be executed on an object instance.
+            </summary>
+        </member>
+        <member name="T:NFluent.IFluentAssertion">
+            <summary>
+            Provides fluent assertion methods to be executed on the system under test (sut).
+            Every method should return a <see cref="T:NFluent.IChainableFluentAssertion`1"/> instance
+            of the same fluent assertion type (closure of operations), or throw an 
+            <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            This 'marker' interface is mandatory for the chainable assertion mechanism. 
+            </summary>
+        </member>
+        <member name="T:NFluent.IEqualityFluentAssertionTrait`1">
+            <summary>
+            Assertion methods related to the equality of the object instance.
+            </summary>
+            <typeparam name="T">Type of the fluent assertion to be chained.</typeparam>
+        </member>
+        <member name="M:NFluent.IEqualityFluentAssertionTrait`1.IsEqualTo(System.Object)">
+            <summary>
+            Checks that the actual value is equal to another expected value.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <param name="expected">The expected value.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is not equal to the expected value.</exception>
+        </member>
+        <member name="M:NFluent.IEqualityFluentAssertionTrait`1.IsNotEqualTo(System.Object)">
+            <summary>
+            Checks that the actual value is not equal to another expected value.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <param name="expected">The expected.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is equal to the expected value.</exception>
+        </member>
+        <member name="T:NFluent.IInstanceTypeFluentAssertionTrait`1">
+            <summary>
+            Assertion methods related to the type of the System Under Test (SUT) instance.
+            </summary>
+            <typeparam name="F">Type of the considered IFluentAssertion.</typeparam>
+        </member>
+        <member name="M:NFluent.IInstanceTypeFluentAssertionTrait`1.IsInstanceOf``1">
+            <summary>
+            Checks that the actual instance is an instance of the given type.
+            </summary>
+            <typeparam name="T">The expected Type of the instance.</typeparam>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is not of the provided type.</exception>
+        </member>
+        <member name="M:NFluent.IInstanceTypeFluentAssertionTrait`1.IsNotInstanceOf``1">
+            <summary>
+            Checks that the actual instance is not an instance of the given type.
+            </summary>
+            <typeparam name="T">The type not expected for this instance.</typeparam>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is of the provided type.</exception>
+        </member>
+        <member name="T:NFluent.ObjectFluentAssertion">
+            <summary>
+            Provides assertion methods to be executed on an object instance.
+            </summary>
+        </member>
+        <member name="M:NFluent.ObjectFluentAssertion.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NFluent.ObjectFluentAssertion"/> class.
+            </summary>
+            <param name="sut">The System Under Test.</param>
+        </member>
+        <member name="M:NFluent.ObjectFluentAssertion.IsEqualTo(System.Object)">
+            <summary>
+            Checks that the actual value is equal to another expected value.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <param name="expected">The expected value.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is not equal to the expected value.</exception>
+        </member>
+        <member name="M:NFluent.ObjectFluentAssertion.IsNotEqualTo(System.Object)">
+            <summary>
+            Checks that the actual value is not equal to another expected value.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <param name="expected">The expected value.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is equal to the expected value.</exception>
+        </member>
+        <member name="M:NFluent.ObjectFluentAssertion.IsInstanceOf``1">
+            <summary>
+            Checks that the actual instance is an instance of the given type.
+            </summary>
+            <typeparam name="T">The expected Type of the instance.</typeparam>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is not of the provided type.</exception>
+        </member>
+        <member name="M:NFluent.ObjectFluentAssertion.IsNotInstanceOf``1">
+            <summary>
+            Checks that the actual instance is not an instance of the given type.
+            </summary>
+            <typeparam name="T">The type not expected for this instance.</typeparam>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is of the provided type.</exception>
+        </member>
+        <member name="T:NFluent.Helpers.EqualityHelper">
+            <summary>
+            Helper class related to Equality methods (used like a traits).
+            </summary>
+        </member>
+        <member name="M:NFluent.Helpers.EqualityHelper.IsEqualTo(System.Object,System.Object)">
+            <summary>
+            Checks that a given instance is considered to be equal to another expected instance. Throws <see cref="T:NFluent.FluentAssertionException"/> otherwise.
+            </summary>
+            <param name="instance">The considered instance.</param>
+            <param name="expected">The expected instance.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is not equal to the expected value.</exception>
+        </member>
+        <member name="M:NFluent.Helpers.EqualityHelper.IsNotEqualTo(System.Object,System.Object)">
+            <summary>
+            Checks that a given instance is not considered to be equal to another expected instance. Throws <see cref="T:NFluent.FluentAssertionException"/> otherwise.
+            </summary>
+            <param name="instance">The considered instance.</param>
+            <param name="expected">The expected instance.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is not equal to the expected value.</exception>
+        </member>
+        <member name="T:NFluent.Extensions.ExtensionsCommonHelpers">
+            <summary>
+            Common helper methods for the NFluent extension methods.
+            </summary>
+        </member>
+        <member name="M:NFluent.Extensions.ExtensionsCommonHelpers.ToStringProperlyFormated(System.Object)">
+            <summary>
+            Returns a string that represents the current object. If the object is already a string, this method will surround it with brackets.
+            </summary>
+            <param name="theObject">The theObject.</param>
+            <returns>A string that represents the current object. If the object is already a string, this method will surround it with brackets.</returns>
+        </member>
+        <member name="T:NFluent.NumberFluentAssertion`1">
+            <summary>
+            Provides assertion methods to be executed on a number instance.
+            </summary>
+            <typeparam name="N">Type of the numerical value.</typeparam>
+        </member>
+        <member name="T:NFluent.INumberFluentAssertion">
+            <summary>
+            Provides assertion methods to be executed on a number instance.
+            </summary>
+        </member>
+        <member name="M:NFluent.INumberFluentAssertion.IsZero">
+            <summary>
+            Verifies that the actual value is equal to zero.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is not equal to zero.</exception>
+        </member>
+        <member name="M:NFluent.INumberFluentAssertion.IsNotZero">
+            <summary>
+            Verifies that the actual value is NOT equal to zero.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is equal to zero.</exception>
+        </member>
+        <member name="M:NFluent.INumberFluentAssertion.IsPositive">
+            <summary>
+            Verifies that the actual value is strictly positive.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is not strictly positive.</exception>
+        </member>
+        <member name="M:NFluent.NumberFluentAssertion`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NFluent.NumberFluentAssertion`1"/> class.
+            </summary>
+            <param name="number">The number to assert on.</param>
+        </member>
+        <member name="M:NFluent.NumberFluentAssertion`1.IsZero">
+            <summary>
+            Verifies that the actual value is equal to zero.
+            </summary>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is not equal to zero.</exception>
+        </member>
+        <member name="M:NFluent.NumberFluentAssertion`1.IsNotZero">
+            <summary>
+            Verifies that the actual value is NOT equal to zero.
+            </summary>
+            <returns>
+            <returns>A chainable assertion.</returns>
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is equal to zero.</exception>
+        </member>
+        <member name="M:NFluent.NumberFluentAssertion`1.IsPositive">
+            <summary>
+            Verifies that the actual value is strictly positive.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is not strictly positive.</exception>
+        </member>
+        <member name="M:NFluent.NumberFluentAssertion`1.IsEqualTo(System.Object)">
+            <summary>
+            Checks that the actual value is equal to another expected value.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <param name="expected">The expected value.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is not equal to the expected value.</exception>
+        </member>
+        <member name="M:NFluent.NumberFluentAssertion`1.IsNotEqualTo(System.Object)">
+            <summary>
+            Checks that the actual value is not equal to another expected value.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <param name="expected">The expected value.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is equal to the expected value.</exception>
+        </member>
+        <member name="M:NFluent.NumberFluentAssertion`1.IsInstanceOf``1">
+            <summary>
+            Checks that the actual instance is an instance of the given type.
+            </summary>
+            <typeparam name="T">The expected Type of the instance.</typeparam>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is not of the provided type.</exception>
+        </member>
+        <member name="M:NFluent.NumberFluentAssertion`1.IsNotInstanceOf``1">
+            <summary>
+            Checks that the actual instance is not an instance of the given type.
+            </summary>
+            <typeparam name="T">The type not expected for this instance.</typeparam>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is of the provided type.</exception>
+        </member>
+        <member name="M:NFluent.NumberFluentAssertion`1.InternalIsZero(`0)">
+            <summary>
+            Checks whether a given value is equal to zero.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>
+              <c>true</c> if the specified value is equal to zero; false otherwise.
+            </returns>
+        </member>
+        <member name="T:NFluent.FluentAssertionException">
+            <summary>
+            Thrown when an assertion failed.
+            </summary>
+        </member>
+        <member name="M:NFluent.FluentAssertionException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NFluent.FluentAssertionException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:NFluent.EnumerableFluentAssertion">
+            <summary>
+            Provides assertion methods to be executed on an enumerable instance.
+            </summary>
+        </member>
+        <member name="T:NFluent.IEnumerableFluentAssertion">
+            <summary>
+            Provides assertion methods to be executed on an enumerable instance.
+            </summary>
+        </member>
+        <member name="M:NFluent.IEnumerableFluentAssertion.Contains``1(``0[])">
+            <summary>
+            Checks that the enumerable contains all the given expected values, in any order.
+            </summary>
+            <typeparam name="T">Type of the elements contained in the enumerable.</typeparam>
+            <param name="expectedValues">The expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contain all the expected values.</exception>
+        </member>
+        <member name="M:NFluent.IEnumerableFluentAssertion.Contains(System.Collections.IEnumerable)">
+            <summary>
+            Checks that the enumerable contains all the values present in another enumerable, in any order.
+            </summary>
+            <param name="otherEnumerable">The enumerable containing the expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contain all the expected values present in the other enumerable.</exception>
+        </member>
+        <member name="M:NFluent.IEnumerableFluentAssertion.ContainsOnly``1(``0[])">
+            <summary>
+            Checks that the enumerable contains only the given values and nothing else, in any order.
+            </summary>
+            <typeparam name="T">Type of the expected values to be found.</typeparam>
+            <param name="expectedValues">The expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contain only the expected values provided.</exception>
+        </member>
+        <member name="M:NFluent.IEnumerableFluentAssertion.ContainsOnly(System.Collections.IEnumerable)">
+            <summary>
+            Checks that the enumerable contains only the values present in another enumerable, and nothing else, in any order.
+            </summary>
+            <param name="expectedValues">The expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contain only the expected values present in the other enumerable.</exception>
+        </member>
+        <member name="M:NFluent.IEnumerableFluentAssertion.ContainsExactly``1(``0[])">
+            <summary>
+            Checks that the enumerable contains only the given expected values and nothing else, in order.
+            This assertion should only be used with IEnumerable that have a consistent iteration order
+            (i.e. don't use it with <see cref="T:System.Collections.Hashtable"/>, prefer <see cref="M:NFluent.IEnumerableFluentAssertion.ContainsOnly``1(``0[])"/> in that case).
+            </summary>
+            <typeparam name="T">Type of the elements to be found.</typeparam>
+            <param name="expectedValues">The expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contains only the exact given values and nothing else, in order.</exception>
+        </member>
+        <member name="M:NFluent.IEnumerableFluentAssertion.ContainsExactly(System.Collections.IEnumerable)">
+            <summary>
+            Checks that the enumerable contains only the values of another enumerable and nothing else, in order.
+            This assertion should only be used with IEnumerable that have a consistent iteration order
+            (i.e. don't use it with <see cref="T:System.Collections.Hashtable"/>, prefer <see cref="M:NFluent.IEnumerableFluentAssertion.ContainsOnly``1(``0[])"/> in that case).
+            </summary>
+            <param name="otherEnumerable">The other enumerable containing the exact expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contains only the exact given values and nothing else, in order.</exception>
+        </member>
+        <member name="M:NFluent.IEnumerableFluentAssertion.HasSize(System.Int64)">
+            <summary>
+            Checks that the enumerable has the proper number of elements.
+            </summary>
+            <param name="expectedSize">The expected size to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable has not the expected number of elements.</exception>
+        </member>
+        <member name="M:NFluent.IEnumerableFluentAssertion.IsEmpty">
+            <summary>
+            Checks that the enumerable is empty.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable is not empty.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.#ctor(System.Collections.IEnumerable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NFluent.EnumerableFluentAssertion"/> class.
+            </summary>
+            <param name="sutEnumerable">The System Under Test enumerable.</param>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.IsEqualTo(System.Object)">
+            <summary>
+            Checks that the actual value is equal to another expected value.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <param name="expected">The expected value.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is not equal to the expected value.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.IsNotEqualTo(System.Object)">
+            <summary>
+            Checks that the actual value is not equal to another expected value.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <param name="expected">The expected value.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is equal to the expected value.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.NFluent#IInstanceTypeFluentAssertionTrait{NFluent#IEnumerableFluentAssertion}#IsInstanceOf``1">
+            <summary>
+            Checks that the actual instance is an instance of the given type.
+            </summary>
+            <typeparam name="T">The expected Type of the instance.</typeparam>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is not of the provided type.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.NFluent#IInstanceTypeFluentAssertionTrait{NFluent#IEnumerableFluentAssertion}#IsNotInstanceOf``1">
+            <summary>
+            Checks that the actual instance is not an instance of the given type.
+            </summary>
+            <typeparam name="T">The type not expected for this instance.</typeparam>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is of the provided type.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.Contains``1(``0[])">
+            <summary>
+            Checks that the enumerable contains all the given expected values, in any order.
+            </summary>
+            <typeparam name="T">Type of the elements contained in the enumerable.</typeparam>
+            <param name="expectedValues">The expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contain all the expected values.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.Contains(System.Collections.IEnumerable)">
+            <summary>
+            Checks that the enumerable contains all the values present in another enumerable, in any order.
+            </summary>
+            <param name="otherEnumerable">The enumerable containing the expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contain all the expected values present in the other enumerable.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.ContainsOnly``1(``0[])">
+            <summary>
+            Checks that the enumerable contains only the given values and nothing else, in any order.
+            </summary>
+            <typeparam name="T">Type of the expected values to be found.</typeparam>
+            <param name="expectedValues">The expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contain only the expected values provided.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.ContainsOnly(System.Collections.IEnumerable)">
+            <summary>
+            Checks that the enumerable contains only the values present in another enumerable, and nothing else, in any order.
+            </summary>
+            <param name="expectedValues">The expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contain only the expected values present in the other enumerable.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.ContainsExactly``1(``0[])">
+            <summary>
+            Checks that the enumerable contains only the given expected values and nothing else, in order.
+            This assertion should only be used with IEnumerable that have a consistent iteration order
+            (i.e. don't use it with <see cref="T:System.Collections.Hashtable"/>, prefer <see cref="M:NFluent.EnumerableFluentAssertion.ContainsOnly``1(``0[])"/> in that case).
+            </summary>
+            <typeparam name="T">Type of the elements to be found.</typeparam>
+            <param name="expectedValues">The expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contains only the exact given values and nothing else, in order.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.ContainsExactly(System.Collections.IEnumerable)">
+            <summary>
+            Checks that the enumerable contains only the values of another enumerable and nothing else, in order.
+            This assertion should only be used with IEnumerable that have a consistent iteration order
+            (i.e. don't use it with <see cref="T:System.Collections.Hashtable"/>, prefer <see cref="M:NFluent.EnumerableFluentAssertion.ContainsOnly``1(``0[])"/> in that case).
+            </summary>
+            <param name="otherEnumerable">The other enumerable containing the exact expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable does not contains only the exact given values and nothing else, in order.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.HasSize(System.Int64)">
+            <summary>
+            Checks that the enumerable has the proper number of elements.
+            </summary>
+            <param name="expectedSize">The expected size to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable has not the expected number of elements.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.IsEmpty">
+            <summary>
+            Checks that the enumerable is empty.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The enumerable is not empty.</exception>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.ExtractNotFoundValues(System.Collections.IEnumerable,System.Collections.IEnumerable)">
+            <summary>
+            Returns all expected values that aren't present in the enumerable.
+            </summary>
+            <param name="enumerable">The enumerable to inspect.</param>
+            <param name="expectedValues">The expected values to search within the enumerable.</param>
+            <returns>
+            A list containing all the expected values that aren't present in the enumerable.
+            </returns>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.ExtractUnexpectedValues(System.Collections.IEnumerable,System.Collections.IEnumerable)">
+            <summary>
+            Returns all the values of the enumerable that don't belong to the expected ones.
+            </summary>
+            <param name="enumerable">The enumerable to inspect.</param>
+            <param name="expectedValues">The allowed values to be part of the enumerable.</param>
+            <returns>
+            A list with all the values found in the enumerable that don't belong to the expected ones.
+            </returns>
+        </member>
+        <member name="M:NFluent.EnumerableFluentAssertion.FormatItemCount(System.Int64)">
+            <summary>
+            Generates the proper description for the items count, based on their numbers.
+            </summary>
+            <param name="itemsCount">The number of items.</param>
+            <returns>
+            The proper description for the items count.
+            </returns>
+        </member>
+        <member name="T:NFluent.StringFluentAssertion">
+            <summary>
+            Provides assertion methods to be executed on a string instance.
+            </summary>
+        </member>
+        <member name="T:NFluent.IStringFluentAssertion">
+            <summary>
+            Provides assertion methods to be executed on a string instance.
+            </summary>
+        </member>
+        <member name="M:NFluent.IStringFluentAssertion.Contains(System.String[])">
+            <summary>
+            Checks that the string contains the given expected values, in any order.
+            </summary>
+            <param name="values">The expected values to be found.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The string does not contains all the given strings in any order.</exception>
+        </member>
+        <member name="M:NFluent.IStringFluentAssertion.StartsWith(System.String)">
+            <summary>
+            Checks that the string starts with the given expected prefix.
+            </summary>
+            <param name="expectedPrefix">The expected prefix.</param>
+            <returns>A chainable assertion.</returns>
+            <exception cref="T:NFluent.FluentAssertionException">The string does not start with the expected prefix.</exception>
+        </member>
+        <member name="M:NFluent.StringFluentAssertion.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NFluent.StringFluentAssertion"/> class.
+            </summary>
+            <param name="value">
+            The String Under Test.
+            </param>
+        </member>
+        <member name="M:NFluent.StringFluentAssertion.Contains(System.String[])">
+            <summary>
+            Checks that the string contains the given expected values, in any order.
+            </summary>
+            <param name="values">
+            The expected values to be found.
+            </param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">
+            The string does not contains all the given strings in any order.
+            </exception>
+        </member>
+        <member name="M:NFluent.StringFluentAssertion.IsInstanceOf``1">
+            <summary>
+                Checks that the actual instance is an instance of the given type.
+            </summary>
+            <typeparam name="T">The expected Type of the instance.</typeparam>
+            <returns>
+                A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is not of the provided type.</exception>
+        </member>
+        <member name="M:NFluent.StringFluentAssertion.IsEqualTo(System.Object)">
+            <summary>
+            Checks that the actual value is equal to another expected value.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <param name="expected">
+                The expected value.
+            </param>
+            <exception cref="T:NFluent.FluentAssertionException">
+            The actual value is not equal to the expected value.
+            </exception>
+        </member>
+        <member name="M:NFluent.StringFluentAssertion.IsNotEqualTo(System.Object)">
+            <summary>
+            Checks that the actual value is not equal to another expected value.
+            </summary>
+            <returns>A chainable assertion.</returns>
+            <param name="expected">
+                The expected value.
+            </param>
+            <exception cref="T:NFluent.FluentAssertionException">
+            The actual value is equal to the expected value.
+            </exception>
+        </member>
+        <member name="M:NFluent.StringFluentAssertion.IsNotInstanceOf``1">
+            <summary>
+                Checks that the actual instance is not an instance of the given type.
+            </summary>
+            <typeparam name="T">The type not expected for this instance.</typeparam>
+            <returns>
+                A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is of the provided type.</exception>
+        </member>
+        <member name="M:NFluent.StringFluentAssertion.StartsWith(System.String)">
+            <summary>
+            Checks that the string starts with the given expected prefix.
+            </summary>
+            <param name="expectedPrefix">
+            The expected prefix.
+            </param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">
+            The string does not start with the expected prefix.
+            </exception>
+        </member>
+        <member name="T:NFluent.Helpers.IsInstanceHelper">
+            <summary>
+            Helper class related to Is(Not)Instance methods (used like a traits).
+            </summary>
+        </member>
+        <member name="M:NFluent.Helpers.IsInstanceHelper.IsInstanceOf(System.Object,System.Type)">
+            <summary>
+            Checks that an instance is of the given expected type.
+            </summary>
+            <param name="instance">The instance to be checked.</param>
+            <param name="expectedType">The expected type.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The instance is not of the expected type.</exception>
+        </member>
+        <member name="M:NFluent.Helpers.IsInstanceHelper.IsNotInstanceOf(System.Object,System.Type)">
+            <summary>
+            Checks that an instance is not of the given expected type.
+            </summary>
+            <param name="instance">The instance to be checked.</param>
+            <param name="typeNotExpected">The type not expected.</param>
+            <exception cref="T:NFluent.FluentAssertionException">The instance is of the type not expected.</exception>
+        </member>
+        <member name="T:NFluent.PropertiesExtensions">
+            <summary>
+            Extension methods for exploiting enumerable content in a fluent manner (i.e. with auto completion support and in an english readable way).
+            </summary>
+        </member>
+        <member name="M:NFluent.PropertiesExtensions.Properties``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Extract all the values of a given property given its name, from an enumerable collection of objects holding that property.
+            </summary>
+            <typeparam name="T">Type of the objects belonging to the initial enumerable collection.</typeparam>
+            <param name="enumerable">The enumerable collection of objects.</param>
+            <param name="propertyName">Name of the property to extract value from for every object of the collection.</param>
+            <returns>
+            An enumerable of all the property values for every <typeparamref name="T"/> objects in the <paramref name="enumerable"/>.
+            </returns>
+            <exception cref="T:System.InvalidOperationException">The object of type <typeparamref name="T"/> don't have a property with the given property name.</exception>
+        </member>
+        <member name="M:NFluent.PropertiesExtensions.Properties``1(``0[],System.String)">
+            <summary>
+            Extract all the values of a given property given its name, from an array of objects holding that property.
+            </summary>
+            <typeparam name="T">Type of the objects belonging to the array.</typeparam>
+            <param name="array">The array of <typeparamref name="T"/>.</param>
+            <param name="propertyName">Name of the property to extract value from for every object of the array.</param>
+            <returns>
+            An enumerable of all the property values for every <typeparamref name="T"/> objects in the <see cref="T:System.Array"/>.
+            </returns>
+        </member>
+    </members>
+</doc>

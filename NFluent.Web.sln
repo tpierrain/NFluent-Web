@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFluent.Web", "NFluent.Web\NFluent.Web.csproj", "{D3816389-CA83-4C2A-B820-938A70D422F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{180CF16B-FDC3-4AA2-9F7F-6E53678AFDD1}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		build.cmd = build.cmd
+		DevDoD.md = DevDoD.md
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+		Settings.StyleCop = Settings.StyleCop
+		UseCases.md = UseCases.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFluent.Web.Tests", "NFluent.Web.Tests\NFluent.Web.Tests.csproj", "{38AF7405-7001-49B3-84D9-E7C4CE72227C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{085A5968-0862-4DEB-9689-2ABDBE1B7D0A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{AAD8D05B-8433-4B31-8A88-82AD229C14EC}"
+	ProjectSection(SolutionItems) = preProject
+		Build.proj = Build.proj
+		.build\MSBuild.Community.Tasks.dll = .build\MSBuild.Community.Tasks.dll
+		.build\MSBuild.Community.Tasks.targets = .build\MSBuild.Community.Tasks.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3816389-CA83-4C2A-B820-938A70D422F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3816389-CA83-4C2A-B820-938A70D422F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3816389-CA83-4C2A-B820-938A70D422F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3816389-CA83-4C2A-B820-938A70D422F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38AF7405-7001-49B3-84D9-E7C4CE72227C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38AF7405-7001-49B3-84D9-E7C4CE72227C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38AF7405-7001-49B3-84D9-E7C4CE72227C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38AF7405-7001-49B3-84D9-E7C4CE72227C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

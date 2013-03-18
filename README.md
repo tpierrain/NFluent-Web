@@ -1,4 +1,4 @@
 NFluent-Web
 ===========
 
-NFluent Web assertion 
+NFluent Web assertions.
