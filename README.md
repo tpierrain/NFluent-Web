@@ -5,18 +5,19 @@ NFluent-Web
 
 NFluent.Web is an extension library to [NFluent](https://github.com/tpierrain/NFluent/blob/master/ReadMe.md) for web-related tests.
 
+As simple as possible
+=====================
 
 With NFluent assertion libraries:
 
-all you've got to remember is: `Check.That`, cause every assertion is then provided via a super-duper-auto-completion-dot-experience ;-)
+All you've got to remember is: `Check.That`, cause every assertion is then provided via a super-duper-auto-completion-dot-experience ;-)
 ------------------------------------------------------------------------------------------------------------------------
-
 
 
 Usage sample
 ------------
 
-With NFluent, you can write simple web assertions like this:
+With NFluent.Web, you can write simple web assertions like this:
 ```c#	
     var request = (HttpWebRequest)WebRequest.Create("http://www.google.com");
 	request.UserAgent = "Mozilla/5.0 compatible";
