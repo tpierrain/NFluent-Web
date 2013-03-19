@@ -1,4 +1,4 @@
-![NFluent](https://github.com/tpierrain/nfluent/blob/master/NFluentWebBanner.png?raw=true)
+![NFluentWeb](https://github.com/tpierrain/nfluent-web/blob/master/NFluentWebBanner.png?raw=true)
 
 NFluent-Web
 ===========
