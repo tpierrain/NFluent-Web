@@ -3,7 +3,7 @@
 NFluent-Web
 ===========
 
-NFluent.Web is an extension library to __[NFluent](https://github.com/tpierrain/NFluent/blob/master/ReadMe.md)__ for web-related tests.
+NFluent.Web is an extension library to __[NFluent](https://github.com/tpierrain/NFluent/blob/master/ReadMe.md)__ for web-related assertions.
 
 As simple as possible
 =====================
@@ -53,7 +53,7 @@ Nfluent __backlog is available as github issues__
 
 New feature to be added?
 ------------------------
-+ If you want to join the project and contribute: see the __[NFluent DoD for development](./DevDoD.md)__ before, but be my guest. 
++ If you want to join the project and contribute: see the __[NFluent DoD for development](./DevDoD.md)__ before, but be our guest. 
 + If you don't want to contribute on the library, but you need a feature not yet implemented, don't hesitate to request it on the __[NFluent-Discuss google group](https://groups.google.com/forum/#!forum/nfluent-discuss)__.
 __In any cases: you are welcome!__
 
