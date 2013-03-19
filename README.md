@@ -3,7 +3,7 @@
 NFluent-Web
 ===========
 
-NFluent.Web is an extension library to [NFluent](https://github.com/tpierrain/NFluent/blob/master/ReadMe.md) for web-related tests.
+NFluent.Web is an extension library to __[NFluent](https://github.com/tpierrain/NFluent/blob/master/ReadMe.md)__ for web-related tests.
 
 As simple as possible
 =====================
