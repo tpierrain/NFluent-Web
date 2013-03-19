@@ -5,6 +5,14 @@ NFluent-Web
 
 NFluent.Web is an extension library to [NFluent](https://github.com/tpierrain/NFluent/blob/master/ReadMe.md) for web-related tests.
 
+
+With NFluent assertion libraries:
+
+all you've got to remember is: `Check.That`, cause every assertion is then provided via a super-duper-auto-completion-dot-experience ;-)
+------------------------------------------------------------------------------------------------------------------------
+
+
+
 Usage sample
 ------------
 
@@ -27,3 +35,6 @@ With NFluent, you can write simple web assertions like this:
     }
 
 ```
+
+Enjoy!
+------
