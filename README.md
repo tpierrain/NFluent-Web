@@ -3,7 +3,7 @@
 NFluent-Web
 ===========
 
-NFluent Web assertions.
+NFluent.Web is an extension library to [NFluent](https://github.com/tpierrain/NFluent/blob/master/ReadMe.md) for web-related tests.
 
 Usage sample
 ------------
