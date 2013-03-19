@@ -21,6 +21,8 @@ namespace NFluent.Web
     /// </summary>
     public static class Check
     {
+        // TODO : Define some use case around web http stuff
+
         /// <summary>
         /// Returns a <see cref="IHttpWebResponseFluentAssertion" /> instance that will provide assertion methods to be executed on a given HttpWebResponse instance.
         /// </summary>

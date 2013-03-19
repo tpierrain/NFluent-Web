@@ -22,6 +22,8 @@ namespace NFluent.Web
     /// </summary>
     public interface IHttpWebResponseFluentAssertion : IFluentAssertion, IEqualityFluentAssertionTrait<IHttpWebResponseFluentAssertion>, IInstanceTypeFluentAssertionTrait<IHttpWebResponseFluentAssertion>
     {
+        // TODO : Expose Assertion on Cookie and Sub-Cookie
+
         /// <summary>
         /// Checks that the http response status code equals the provided status code.
         /// </summary>

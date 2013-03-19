@@ -27,6 +27,7 @@ namespace NFluent.Web
     /// </summary>
     public class HttpWebResponseFluentAssertion : IHttpWebResponseFluentAssertion
     {
+        // TODO : Expose Assertion on Cookie and Sub-Cookie
         #region Fields
 
         private readonly HttpWebResponse hwrut;

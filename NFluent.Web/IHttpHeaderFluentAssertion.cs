@@ -23,6 +23,7 @@ namespace NFluent.Web
         // TODO: make the Contains method accept params of string
         // TODO: make the Contains methode return a IChainableHttpHeaderOrHttpWebResponseFluentAssertion instance
         // TODO: add more methods like StarstWith, EndsWith, etc. May be the proper moment to expose the same methods as the IStringFluentAssert (only the return value will differ) and to leverage on common implementations. 
+        // TODO : Generalize the IHttpHeaderFluentAssertion to able to use the api as for cookie and maybe every key value pair collection
 
         /// <summary>
         /// Checks that the actual http response header contains the expected given string.
