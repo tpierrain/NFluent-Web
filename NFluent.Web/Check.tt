@@ -12,6 +12,9 @@
 //   limitations under the License.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+<#@ assembly name="$(SolutionDir)\NFluent.dll" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Reflection" #>
 namespace NFluent.Web
 {
     using System;
@@ -45,71 +48,30 @@ namespace NFluent.Web
         // TODO : Find a way to extract XML documentation via T4, so that we will proxy documentation of core methods too.
         #pragma warning disable 1591
 
-        public static NFluent.IEnumerableFluentAssertion That(System.Collections.IEnumerable enumerable)
+<#
+	string coreClassName = "NFluent.Check";
+	MethodInfo[] methodInfos = typeof(NFluent.Check).GetMethods(BindingFlags.Public | BindingFlags.Static);
+	foreach (MethodInfo methodInfo in methodInfos)
+	{
+		var methodName = methodInfo.Name;
+		var returnType = methodInfo.ReturnType;
+		ParameterInfo[] parameters = methodInfo.GetParameters();
+		var parametersStringVersion = new StringBuilder();
+		var parametersNames = new StringBuilder();
+		foreach(var parameter in parameters)
+		{
+			parametersStringVersion.Append(parameter);
+			parametersNames.Append(parameter.Name);
+		}
+#>
+        public static <#= returnType #> <#= methodName #>(<#= parametersStringVersion.ToString() #>)
         {
-            return NFluent.Check.That(enumerable);
+            return <#= coreClassName #>.<#= methodName #>(<#= parametersNames.ToString() #>);
         }
 
-        public static NFluent.IStringFluentAssertion That(System.String value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.INumberFluentAssertion That(Int32 value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.INumberFluentAssertion That(Int64 value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.INumberFluentAssertion That(Double value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.INumberFluentAssertion That(System.Decimal value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.INumberFluentAssertion That(Single value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.INumberFluentAssertion That(Int16 value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.INumberFluentAssertion That(Byte value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.INumberFluentAssertion That(UInt32 value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.INumberFluentAssertion That(UInt16 value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.INumberFluentAssertion That(UInt64 value)
-        {
-            return NFluent.Check.That(value);
-        }
-
-        public static NFluent.IObjectFluentAssertion That(System.Object value)
-        {
-            return NFluent.Check.That(value);
-        }
-
+<#
+	}
+#>
         #pragma warning disable 1591
 
         #endregion

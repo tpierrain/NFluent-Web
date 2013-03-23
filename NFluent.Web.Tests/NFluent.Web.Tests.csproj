@@ -32,7 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NFluent">
+    <Reference Include="NFluent, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages-temp\NFluent.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
@@ -50,6 +51,8 @@
   <ItemGroup>
     <Compile Include="HttpResponseRelatedTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebAndCoreMixtureTests.cs" />
+    <Compile Include="WebRequestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
