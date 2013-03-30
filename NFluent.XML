@@ -400,21 +400,21 @@
         </member>
         <member name="M:NFluent.INumberFluentAssertion.IsZero">
             <summary>
-            Verifies that the actual value is equal to zero.
+            Checks that the actual value is equal to zero.
             </summary>
             <returns>A chainable assertion.</returns>
             <exception cref="T:NFluent.FluentAssertionException">The value is not equal to zero.</exception>
         </member>
         <member name="M:NFluent.INumberFluentAssertion.IsNotZero">
             <summary>
-            Verifies that the actual value is NOT equal to zero.
+            Checks that the actual value is NOT equal to zero.
             </summary>
             <returns>A chainable assertion.</returns>
             <exception cref="T:NFluent.FluentAssertionException">The value is equal to zero.</exception>
         </member>
         <member name="M:NFluent.INumberFluentAssertion.IsPositive">
             <summary>
-            Verifies that the actual value is strictly positive.
+            Checks that the actual value is strictly positive.
             </summary>
             <returns>A chainable assertion.</returns>
             <exception cref="T:NFluent.FluentAssertionException">The value is not strictly positive.</exception>
@@ -427,7 +427,7 @@
         </member>
         <member name="M:NFluent.NumberFluentAssertion`1.IsZero">
             <summary>
-            Verifies that the actual value is equal to zero.
+            Checks that the actual value is equal to zero.
             </summary>
             <returns>
             A chainable assertion.
@@ -436,7 +436,7 @@
         </member>
         <member name="M:NFluent.NumberFluentAssertion`1.IsNotZero">
             <summary>
-            Verifies that the actual value is NOT equal to zero.
+            Checks that the actual value is NOT equal to zero.
             </summary>
             <returns>
             <returns>A chainable assertion.</returns>
@@ -445,7 +445,7 @@
         </member>
         <member name="M:NFluent.NumberFluentAssertion`1.IsPositive">
             <summary>
-            Verifies that the actual value is strictly positive.
+            Checks that the actual value is strictly positive.
             </summary>
             <returns>A chainable assertion.</returns>
             <exception cref="T:NFluent.FluentAssertionException">The value is not strictly positive.</exception>
@@ -726,6 +726,248 @@
             <returns>
             The proper description for the items count.
             </returns>
+        </member>
+        <member name="T:Spike.Check">
+            <summary>
+            Provides <see cref="T:Spike.IFluentAssertion`1"/> instances to be used in order to make 
+            check(s) on the provided value.
+            </summary>
+        </member>
+        <member name="M:Spike.Check.That``1(``0)">
+            <summary>
+            Returns a <see cref="T:Spike.IFluentAssertion`1"/> instance that will provide assertion methods to be executed on a given value.
+            </summary>
+            <typeparam name="T">Type of the value to be tested.</typeparam>
+            <param name="value">The value to be tested.</param>
+            <returns>
+            A <see cref="T:Spike.IFluentAssertion`1"/> instance to use in order to assert things on the given value.
+            </returns>
+            <remarks>
+            Every method of the returned <see cref="T:Spike.IFluentAssertion`1"/> instance will throw a <see cref="T:NFluent.FluentAssertionException"/> when failing.
+            </remarks>
+        </member>
+        <member name="T:Spike.Ext.ComparableFluentAssertionExtensions">
+            <summary>
+            Provides assertion methods to be executed on an <see cref="T:System.IComparable"/> instance.
+            </summary>
+        </member>
+        <member name="M:Spike.Ext.ComparableFluentAssertionExtensions.IsBefore(Spike.IFluentAssertion{System.IComparable},System.IComparable)">
+            <summary>
+            Determines whether the specified value is before the other one.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <param name="otherValue">The other value.</param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The current value is not before the other one.</exception>
+        </member>
+        <member name="T:Spike.Ext.DecimalFluentAssertionExtensions">
+            <summary>
+            Provides assertion methods to be executed on a decimal value.
+            </summary>
+        </member>
+        <member name="M:Spike.Ext.DecimalFluentAssertionExtensions.IsEqualTo(Spike.IFluentAssertion{System.Decimal},System.Object)">
+            <summary>
+            Checks that the actual value is equal to another expected value.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <param name="expected">The expected value.</param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is not equal to the expected value.</exception>
+        </member>
+        <member name="M:Spike.Ext.DecimalFluentAssertionExtensions.IsNotEqualTo(Spike.IFluentAssertion{System.Decimal},System.Object)">
+            <summary>
+            Checks that the actual value is not equal to another expected value.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <param name="expected">The expected value.</param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is equal to the expected value.</exception>
+        </member>
+        <member name="M:Spike.Ext.DecimalFluentAssertionExtensions.IsInstanceOf``1(Spike.IFluentAssertion{System.Decimal})">
+            <summary>
+            Checks that the actual instance is an instance of the given type.
+            </summary>
+            <typeparam name="T">The expected Type of the instance.</typeparam>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is not of the provided type.</exception>
+        </member>
+        <member name="M:Spike.Ext.DecimalFluentAssertionExtensions.IsNotInstanceOf``1(Spike.IFluentAssertion{System.Decimal})">
+            <summary>
+            Checks that the actual instance is not an instance of the given type.
+            </summary>
+            <typeparam name="T">The type not expected for this instance.</typeparam>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is of the provided type.</exception>
+        </member>
+        <member name="M:Spike.Ext.DecimalFluentAssertionExtensions.IsZero(Spike.IFluentAssertion{System.Decimal})">
+            <summary>
+            Checks that the actual value is equal to zero.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is not equal to zero.</exception>
+        </member>
+        <member name="M:Spike.Ext.DecimalFluentAssertionExtensions.IsNotZero(Spike.IFluentAssertion{System.Decimal})">
+            <summary>
+            Checks that the actual value is NOT equal to zero.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <returns>
+              <returns>A chainable assertion.</returns>
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is equal to zero.</exception>
+        </member>
+        <member name="M:Spike.Ext.DecimalFluentAssertionExtensions.IsPositive(Spike.IFluentAssertion{System.Decimal})">
+            <summary>
+            Checks that the actual value is strictly positive.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is not strictly positive.</exception>
+        </member>
+        <member name="T:Spike.FluentAssertion`1">
+            <summary>
+            Provides assertion methods to be executed on a given value.
+            </summary>
+            <typeparam name="T">Type of the value to assert on.</typeparam>
+        </member>
+        <member name="T:Spike.IFluentAssertion`1">
+            <summary>
+            Provides assertion methods to be executed on a given value.
+            </summary>
+            <typeparam name="T">Type of the value to assert on.</typeparam>
+        </member>
+        <member name="P:Spike.IFluentAssertion`1.Value">
+            <summary>
+            Gets the value to be tested (provided for any extension method to be able to test it).
+            </summary>
+            <value>
+            The value to be tested by any fluent assertion extension method.
+            </value>
+        </member>
+        <member name="M:Spike.FluentAssertion`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spike.FluentAssertion`1"/> class.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:Spike.FluentAssertion`1.Value">
+            <summary>
+            Gets the value to be tested (provided for any extension method to be able to test it).
+            </summary>
+            <value>
+            The value to be tested by any fluent assertion extension method.
+            </value>
+        </member>
+        <member name="T:Spike.Ext.IntFluentAssertionExtensions">
+            <summary>
+            Provides assertion methods to be executed on an integer value.
+            </summary>
+        </member>
+        <member name="M:Spike.Ext.IntFluentAssertionExtensions.IsEqualTo(Spike.IFluentAssertion{System.Int32},System.Object)">
+            <summary>
+            Checks that the actual value is equal to another expected value.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <param name="expected">The expected value.</param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is not equal to the expected value.</exception>
+        </member>
+        <member name="M:Spike.Ext.IntFluentAssertionExtensions.IsNotEqualTo(Spike.IFluentAssertion{System.Int32},System.Object)">
+            <summary>
+            Checks that the actual value is not equal to another expected value.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <param name="expected">The expected value.</param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual value is equal to the expected value.</exception>
+        </member>
+        <member name="M:Spike.Ext.IntFluentAssertionExtensions.IsInstanceOf``1(Spike.IFluentAssertion{System.Int32})">
+            <summary>
+            Checks that the actual instance is an instance of the given type.
+            </summary>
+            <typeparam name="T">The expected Type of the instance.</typeparam>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is not of the provided type.</exception>
+        </member>
+        <member name="M:Spike.Ext.IntFluentAssertionExtensions.IsNotInstanceOf``1(Spike.IFluentAssertion{System.Int32})">
+            <summary>
+            Checks that the actual instance is not an instance of the given type.
+            </summary>
+            <typeparam name="T">The type not expected for this instance.</typeparam>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <returns>
+            A chainable fluent assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The actual instance is of the provided type.</exception>
+        </member>
+        <member name="M:Spike.Ext.IntFluentAssertionExtensions.IsZero(Spike.IFluentAssertion{System.Int32})">
+            <summary>
+            Checks that the actual value is equal to zero.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is not equal to zero.</exception>
+        </member>
+        <member name="M:Spike.Ext.IntFluentAssertionExtensions.IsNotZero(Spike.IFluentAssertion{System.Int32})">
+            <summary>
+            Checks that the actual value is NOT equal to zero.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <returns>
+              <returns>A chainable assertion.</returns>
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is equal to zero.</exception>
+        </member>
+        <member name="M:Spike.Ext.IntFluentAssertionExtensions.IsPositive(Spike.IFluentAssertion{System.Int32})">
+            <summary>
+            Checks that the actual value is strictly positive.
+            </summary>
+            <param name="fluentAssertion">The fluent assertion to be extended.</param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:NFluent.FluentAssertionException">The value is not strictly positive.</exception>
+        </member>
+        <member name="T:Spike.Ext.StringFluentAssertionExtensions">
+            <summary>
+            Provides assertion methods to be executed on a string instance.
+            </summary>
+        </member>
+        <member name="M:Spike.Ext.StringFluentAssertionExtensions.HasTheForce(Spike.IFluentAssertion{System.String})">
+            <summary>
+            Dummy method for spike purpose (to be deleted). Determines whether [has the force] [the specified fluent assertion].
+            </summary>
+            <param name="fluentAssertion">The fluent assertion.</param>
+            <returns>
+            A chainable assertion.
+            </returns>
+            <exception cref="T:System.Exception">The current value has not "force".</exception>
         </member>
         <member name="T:NFluent.StringFluentAssertion">
             <summary>
