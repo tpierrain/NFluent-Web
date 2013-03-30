@@ -21,7 +21,7 @@
         /// <exception cref="FluentAssertionException">The actual value is not equal to the expected value.</exception>
         public static IChainableFluentAssertion<IHttpWebResponseFluentAssertion> IsEqualTo(this IFluentAssertion<HttpWebResponse> fluentAssertion, object expected)
         {
-            // TODO : migrate the implementation  directly here
+            // TODO : migrate the implementation directly here?
             var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
             
             return assertionStrategy.IsEqualTo(expected);
