@@ -15,11 +15,12 @@
 namespace NFluent.Web
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Net;
 
     /// <summary>
-    /// Provides a way to chain another instance of <see cref="IHttpWebResponseFluentAssertion"/> or <see cref="IHttpHeaderFluentAssertion"/>.
+    /// Provides a way to chain another instance of <see cref="IFluentAssertion{HttpWebResponse}"/> or <see cref="IHttpHeaderFluentAssertion"/>.
     /// </summary>
-    public interface IChainableHttpHeaderOrHttpWebResponseFluentAssertion : IChainableFluentAssertion<IHttpWebResponseFluentAssertion>
+    public interface IChainableHttpHeaderOrHttpWebResponseFluentAssertion : IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>
     {
         /// <summary>
         /// Chains a new <see cref="IHttpHeaderFluentAssertion"/> instance to the current assertion.

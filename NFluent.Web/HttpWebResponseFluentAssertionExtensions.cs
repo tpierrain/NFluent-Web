@@ -1,8 +1,11 @@
 ﻿namespace NFluent.Web
 {
+    using System.Linq;
     using System.Net;
 
-    using Spike;
+    using NFluent.Extensions;
+    using NFluent.Helpers;
+    using NFluent.Web.Helpers;
 
     /// <summary>
     /// Provides assertion methods to be executed on an http header, and allowing them to be
@@ -19,12 +22,11 @@
         /// A chainable assertion.
         /// </returns>
         /// <exception cref="FluentAssertionException">The actual value is not equal to the expected value.</exception>
-        public static IChainableFluentAssertion<IHttpWebResponseFluentAssertion> IsEqualTo(this IFluentAssertion<HttpWebResponse> fluentAssertion, object expected)
+        public static IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>> IsEqualTo(this IFluentAssertion<HttpWebResponse> fluentAssertion, object expected)
         {
-            // TODO : migrate the implementation directly here?
-            var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
+            EqualityHelper.IsEqualTo(fluentAssertion.Value, expected);
             
-            return assertionStrategy.IsEqualTo(expected);
+            return new ChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>(fluentAssertion);
         }
 
         /// <summary>
@@ -36,11 +38,11 @@
         /// A chainable assertion.
         /// </returns>
         /// <exception cref="FluentAssertionException">The actual value is equal to the expected value.</exception>
-        public static IChainableFluentAssertion<IHttpWebResponseFluentAssertion> IsNotEqualTo(this IFluentAssertion<HttpWebResponse> fluentAssertion, object expected)
+        public static IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>> IsNotEqualTo(this IFluentAssertion<HttpWebResponse> fluentAssertion, object expected)
         {
-            var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
-            
-            return assertionStrategy.IsNotEqualTo(expected);
+            EqualityHelper.IsNotEqualTo(fluentAssertion.Value, expected);
+
+            return new ChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>(fluentAssertion);
         }
 
         /// <summary>
@@ -52,11 +54,11 @@
         /// A chainable fluent assertion.
         /// </returns>
         /// <exception cref="FluentAssertionException">The actual instance is not of the provided type.</exception>
-        public static IChainableFluentAssertion<IHttpWebResponseFluentAssertion> IsInstanceOf<T>(this IFluentAssertion<HttpWebResponse> fluentAssertion)
+        public static IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>> IsInstanceOf<T>(this IFluentAssertion<HttpWebResponse> fluentAssertion)
         {
-            var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
-            
-            return assertionStrategy.IsInstanceOf<T>();
+            IsInstanceHelper.IsInstanceOf(fluentAssertion.Value, typeof(T));
+
+            return new ChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>(fluentAssertion);
         }
 
         /// <summary>
@@ -68,11 +70,11 @@
         /// A chainable fluent assertion.
         /// </returns>
         /// <exception cref="FluentAssertionException">The actual instance is of the provided type.</exception>
-        public static IChainableFluentAssertion<IHttpWebResponseFluentAssertion> IsNotInstanceOf<T>(this IFluentAssertion<HttpWebResponse> fluentAssertion)
+        public static IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>> IsNotInstanceOf<T>(this IFluentAssertion<HttpWebResponse> fluentAssertion)
         {
-            var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
+            IsInstanceHelper.IsNotInstanceOf(fluentAssertion.Value, typeof(T));
 
-            return assertionStrategy.IsNotInstanceOf<T>();
+            return new ChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>(fluentAssertion);
         }
 
         /// <summary>
@@ -84,11 +86,14 @@
         /// A chainable assertion.
         /// </returns>
         /// <exception cref="FluentAssertionException">The http response code does not equal to the given status code.</exception>
-        public static IChainableFluentAssertion<IHttpWebResponseFluentAssertion> StatusCodeEqualsTo(this IFluentAssertion<HttpWebResponse> fluentAssertion, HttpStatusCode statusCode)
+        public static IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>> StatusCodeEqualsTo(this IFluentAssertion<HttpWebResponse> fluentAssertion, HttpStatusCode statusCode)
         {
-            var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
+            if (fluentAssertion.Value.StatusCode != statusCode)
+            {
+                throw new FluentAssertionException(string.Format("[{0}] not equals to the expected http status code [{1}]", fluentAssertion.Value.StatusCode.ToStringProperlyFormated(), statusCode.ToStringProperlyFormated()));
+            }
 
-            return assertionStrategy.StatusCodeEqualsTo(statusCode);
+            return new ChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>(fluentAssertion);
         }
 
         /// <summary>
@@ -102,9 +107,10 @@
         /// <exception cref="FluentAssertionException">The response headers of the <see cref="HttpWebResponse" /> instance does not contain any header with the specified name.</exception>
         public static IChainableHttpHeaderOrHttpWebResponseFluentAssertion HasHeader(this IFluentAssertion<HttpWebResponse> fluentAssertion, HttpResponseHeader header)
         {
-            var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
+            string headerName = header.ToString();
+            string headerContent = fluentAssertion.Value.Headers[header];
 
-            return assertionStrategy.HasHeader(header);
+            return HasHeaderInternal(headerContent, headerName, fluentAssertion);
         }
 
         /// <summary>
@@ -118,9 +124,9 @@
         /// <exception cref="FluentAssertionException">The response headers of the <see cref="HttpWebResponse" /> instance does not contain any header with the specified name.</exception>
         public static IChainableHttpHeaderOrHttpWebResponseFluentAssertion HasHeader(this IFluentAssertion<HttpWebResponse> fluentAssertion, string headerName)
         {
-            var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
+            string headerContent = fluentAssertion.Value.Headers[headerName];
 
-            return assertionStrategy.HasHeader(headerName);
+            return HasHeaderInternal(headerContent, headerName, fluentAssertion);
         }
 
         /// <summary>
@@ -131,11 +137,14 @@
         /// A chainable fluent assertion.
         /// </returns>
         /// <exception cref="FluentAssertionException">The actual response content is not encoded using gzip.</exception>
-        public static IChainableFluentAssertion<IHttpWebResponseFluentAssertion> IsGZipEncoded(this IFluentAssertion<HttpWebResponse> fluentAssertion)
+        public static IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>> IsGZipEncoded(this IFluentAssertion<HttpWebResponse> fluentAssertion)
         {
-            var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
+            if (!IsGZipEncodedInternal(fluentAssertion))
+            {
+                throw new FluentAssertionException("The http response content is not encoded using gzip.");
+            }
 
-            return assertionStrategy.IsGZipEncoded();
+            return new ChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>(fluentAssertion);
         }
 
         /// <summary>
@@ -146,11 +155,14 @@
         /// A chainable fluent assertion.
         /// </returns>
         /// <exception cref="FluentAssertionException">The actual response content is encoded using gzip.</exception>
-        public static IChainableFluentAssertion<IHttpWebResponseFluentAssertion> IsNotGZipEncoded(this IFluentAssertion<HttpWebResponse> fluentAssertion)
+        public static IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>> IsNotGZipEncoded(this IFluentAssertion<HttpWebResponse> fluentAssertion)
         {
-            var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
+            if (IsGZipEncodedInternal(fluentAssertion))
+            {
+                throw new FluentAssertionException("The http response content is encoded using gzip.");
+            }
 
-            return assertionStrategy.IsNotGZipEncoded();
+            return new ChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>(fluentAssertion);
         }
 
         /// <summary>
@@ -162,11 +174,34 @@
         /// A chainable assertion.
         /// </returns>
         /// <exception cref="FluentAssertionException">The response content does not contains all the given strings in any order.</exception>
-        public static IChainableFluentAssertion<IHttpWebResponseFluentAssertion> Contains(this IFluentAssertion<HttpWebResponse> fluentAssertion, params string[] values)
+        public static IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>> Contains(this IFluentAssertion<HttpWebResponse> fluentAssertion, params string[] values)
         {
-            var assertionStrategy = new HttpWebResponseFluentAssertion(fluentAssertion.Value);
+            var responseContent = IsGZipEncodedInternal(fluentAssertion) ?
+                                        HttpHelper.ReadGZipStream(fluentAssertion.Value) :
+                                        HttpHelper.ReadResponseStream(fluentAssertion.Value);
+            var notFound = values.Where(value => !responseContent.Contains(value)).ToList();
 
-            return assertionStrategy.Contains(values);
+            if (notFound.Count > 0)
+            {
+                throw new FluentAssertionException(string.Format(@"The http response content does not contain the expected value(s): [{0}].", notFound.ToEnumeratedString()));
+            }
+
+            return new ChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>(fluentAssertion);
+        }
+
+        private static IChainableHttpHeaderOrHttpWebResponseFluentAssertion HasHeaderInternal(string headerContent, string headerName, IFluentAssertion<HttpWebResponse> fluentAssertion)
+        {
+            if (string.IsNullOrEmpty(headerContent))
+            {
+                throw new FluentAssertionException(string.Format("[{0}] header was not found in the response headers", headerName.ToStringProperlyFormated()));
+            }
+
+            return new ChainableHttpHeaderOrHttpWebResponseFluentAssertion(headerName, headerContent, fluentAssertion);
+        }
+
+        private static bool IsGZipEncodedInternal(IFluentAssertion<HttpWebResponse> fluentAssertion)
+        {
+            return fluentAssertion.Value.ContentEncoding == "gzip";
         }
     }
 }

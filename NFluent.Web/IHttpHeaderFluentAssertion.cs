@@ -14,11 +14,13 @@
 // // --------------------------------------------------------------------------------------------------------------------
 namespace NFluent.Web
 {
+    using System.Net;
+
     /// <summary>
     /// Provides assertion methods to be executed on an http header, and allowing them to be
     /// chained with other assertions related to the underlying IHttpWebResponse instance this time.
     /// </summary>
-    public interface IHttpHeaderFluentAssertion : IChainableFluentAssertion<IHttpWebResponseFluentAssertion>
+    public interface IHttpHeaderFluentAssertion : IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>
     {
         // TODO: make the Contains method accept params of string
         // TODO: make the Contains methode return a IChainableHttpHeaderOrHttpWebResponseFluentAssertion instance
@@ -37,6 +39,6 @@ namespace NFluent.Web
         /// <exception cref="FluentAssertionException">
         /// The actual http response header does not contain the expected value.
         /// </exception>
-        IChainableFluentAssertion<IHttpWebResponseFluentAssertion> Contains(string expected);
+        IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>> Contains(string expected);
     }
 }

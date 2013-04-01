@@ -15,15 +15,16 @@
 namespace NFluent.Web
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Net;
 
     /// <summary>
-    /// Provides a way to chain another instance of <see cref="IHttpWebResponseFluentAssertion"/> or <see cref="IHttpHeaderFluentAssertion"/>.
+    /// Provides a way to chain another instance of <see cref="IFluentAssertion{HttpWebResponse}"/> or <see cref="IHttpHeaderFluentAssertion"/>.
     /// </summary>
     internal class ChainableHttpHeaderOrHttpWebResponseFluentAssertion : IChainableHttpHeaderOrHttpWebResponseFluentAssertion
     {
         private readonly string headerName;
         private readonly string headerContent;
-        private readonly IHttpWebResponseFluentAssertion previousFluentAssertion;
+        private readonly IFluentAssertion<HttpWebResponse> previousFluentAssertion;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableHttpHeaderOrHttpWebResponseFluentAssertion" /> class.
@@ -31,7 +32,7 @@ namespace NFluent.Web
         /// <param name="headerName">Name of the header.</param>
         /// <param name="headerContent">Content of the header.</param>
         /// <param name="previousFluentAssertion">The previous fluent assertion.</param>
-        public ChainableHttpHeaderOrHttpWebResponseFluentAssertion(string headerName, string headerContent, IHttpWebResponseFluentAssertion previousFluentAssertion)
+        public ChainableHttpHeaderOrHttpWebResponseFluentAssertion(string headerName, string headerContent, IFluentAssertion<HttpWebResponse> previousFluentAssertion)
         {
             this.headerName = headerName;
             this.headerContent = headerContent;
@@ -45,7 +46,7 @@ namespace NFluent.Web
         /// The new fluent assertion instance which has been chained to the previous one.
         /// </value>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1623:PropertySummaryDocumentationMustMatchAccessors", Justification = "Reviewed. Suppression is OK here since we want to trick and improve the auto-completion experience here.")]
-        public IHttpWebResponseFluentAssertion And
+        public IFluentAssertion<HttpWebResponse> And
         {
             get
             {

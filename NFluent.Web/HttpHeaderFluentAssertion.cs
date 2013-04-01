@@ -15,6 +15,7 @@
 namespace NFluent.Web
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Net;
 
     using NFluent.Extensions;
 
@@ -26,7 +27,7 @@ namespace NFluent.Web
     {
         private readonly string headerName;
         private readonly string headerContent;
-        private readonly IHttpWebResponseFluentAssertion webResponseFluentAssertion;
+        private readonly IFluentAssertion<HttpWebResponse> webResponseFluentAssertion;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpHeaderFluentAssertion" /> class.
@@ -34,7 +35,7 @@ namespace NFluent.Web
         /// <param name="headerName">Name of the header.</param>
         /// <param name="headerContent">Content of the header.</param>
         /// <param name="webResponseFluentAssertion">The web response fluent assertion.</param>
-        public HttpHeaderFluentAssertion(string headerName, string headerContent, IHttpWebResponseFluentAssertion webResponseFluentAssertion)
+        public HttpHeaderFluentAssertion(string headerName, string headerContent, IFluentAssertion<HttpWebResponse> webResponseFluentAssertion)
         {
             this.headerName = headerName;
             this.headerContent = headerContent;
@@ -48,7 +49,7 @@ namespace NFluent.Web
         /// The new fluent assertion instance which has been chained to the previous one.
         /// </value>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1623:PropertySummaryDocumentationMustMatchAccessors", Justification = "Reviewed. Suppression is OK here.")]
-        IHttpWebResponseFluentAssertion IChainableFluentAssertion<IHttpWebResponseFluentAssertion>.And
+        IFluentAssertion<HttpWebResponse> IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>.And
         {
             get
             {
@@ -68,14 +69,14 @@ namespace NFluent.Web
         /// <exception cref="FluentAssertionException">
         /// The actual http response header does not contain the expected value.
         /// </exception>
-        public IChainableFluentAssertion<IHttpWebResponseFluentAssertion> Contains(string expected)
+        public IChainableFluentAssertion<IFluentAssertion<HttpWebResponse>> Contains(string expected)
         {
             if (!this.headerContent.Contains(expected))
             {
                 throw new FluentAssertionException(string.Format("Response header with name [{0}] does not contain [{1}]. Header content is [{2}].", this.headerName.ToStringProperlyFormated(), expected.ToStringProperlyFormated(), this.headerContent.ToStringProperlyFormated()));
             }
 
-            return new ChainableFluentAssertion<IHttpWebResponseFluentAssertion>(this.webResponseFluentAssertion);
+            return new ChainableFluentAssertion<IFluentAssertion<HttpWebResponse>>(this.webResponseFluentAssertion);
         }
     }
 }
