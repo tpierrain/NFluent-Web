@@ -57,3 +57,16 @@ New feature to be added?
 + If you don't want to contribute on the library, but you need a feature not yet implemented, don't hesitate to request it on the __[NFluent-Discuss google group](https://groups.google.com/forum/#!forum/nfluent-discuss)__.
 __In any cases: you are welcome!__
 
+Many thanks
+------
++ To the contributors: __[Marc-Antoine LATOUR](https://github.com/malat)__, __[Rui CARVALHO](http://www.codedistillers.com/)__.
+
++ To __[Rui CARVALHO](http://www.codedistillers.com/)__, for the nice NFluent logo he has designed.
+
++ To the mates that gave me ideas and feedbacks to make this lib as fluent as possible: __[Joel COSTIGLIOLA](https://github.com/joel-costigliola)__, __[Rui CARVALHO](http://www.codedistillers.com/)__, __[Cyrille DUPUYDAUBY](http://dupdob.wordpress.com/)__, __Benoit LABAERE__, ... 
+
+- - -
+
+[thomas@pierrain.net](mailto:thomas@pierrain.net) / March 2013
+
+
