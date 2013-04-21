@@ -205,7 +205,6 @@
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Timeout = 5000;
             request.UserAgent = "Mozilla/5.0 compatible";
-            
             return request;
         }
     }
